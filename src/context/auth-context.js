@@ -14,14 +14,13 @@ function AuthProvider(props) {
   //   return <FullPageSpinner />
   // }
 
-  const login = () => {} // make a login request
+  const data = {user: ''} // initial state
+
+  const login = (input) => {data.user = input} // make a login request, for now let anyone login with whatever
   const register = () => {} // register the user
   const logout = () => {} // clear the token in localStorage and the user data
 
-  // note, I'm not bothering to optimize this `value` with React.useMemo here
-  // because this is the top-most component rendered in our app and it will very
-  // rarely re-render/cause a performance problem.
-  const data = {user: 'test'}
+  
   return (
     <AuthContext.Provider value={{data, login, logout, register}} {...props} />
   )
