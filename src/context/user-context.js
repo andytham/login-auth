@@ -1,12 +1,13 @@
-import React from 'react'
-import { useAuth } from './auth-context'
+import React, { useContext } from 'react'
+import { AuthContext } from './auth-context'
 
 const UserContext = React.createContext()
 
 function UserProvider(props) {
+  const auth = useContext(AuthContext)
   const {
-    data: {user},
-  } = useAuth()
+    state: {user},
+  } = auth
   return <UserContext.Provider value={user} {...props} />
 }
 
