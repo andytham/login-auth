@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import {FullPageSpinner} from '../components/lib'
 const AuthContext = React.createContext()
 
@@ -14,10 +14,14 @@ function AuthProvider(props) {
   //   return <FullPageSpinner />
   // }
 
-  const data = {user: ''} // initial state
-
-  const login = (input) => {data.user = input} // make a login request, for now let anyone login with whatever
-  const register = () => {} // register the user
+  // const data = {user: 'initial'} // initial state
+  const [data, setData] = useState({user: ''})
+  
+  const login = (input) => {
+    setData({...data, user: input})
+  } // make a login request, for now let anyone login with whatever
+  const register = () => {
+  } // register the user
   const logout = () => {} // clear the token in localStorage and the user data
 
   
@@ -27,4 +31,4 @@ function AuthProvider(props) {
 }
 
 const useAuth = () => React.useContext(AuthContext)
-export {AuthProvider, useAuth}
+export {AuthProvider, useAuth, AuthContext}

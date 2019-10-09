@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 
-import { useAuth } from './context/auth-context'
+import { AuthProvider, useAuth } from './context/auth-context'
+import { useUser } from './context/user-context';
 
 export default function Login(){
+	const user = useUser()
+	const auth = useAuth()
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 	function handleUsernameChange(e){
@@ -11,10 +14,20 @@ export default function Login(){
 	function handlePasswordChange(e){
 		setPassword(e.target.value)
 	}
+	function handleLogin(e){
+		e.preventDefault()
+		auth.login(username)
+		auth.register()
+	}
+	function test(e){
+		e.preventDefault()
+		console.log(user)
+	}
 	return (
 		<div className="login">
 			<form>
-				<label for="username">Username
+				<label>
+					Username
 					<input 
 						type="text"
 						value={username}
@@ -22,7 +35,8 @@ export default function Login(){
 						/>
 				</label>
 				<br />
-				<label for="password">Password
+				<label>
+					Password
 					<input 
 						type="password"
 						value={password}
@@ -30,7 +44,8 @@ export default function Login(){
 					/>
 				</label>
 				<br />
-				<input type="submit" value="login" />
+				<input type="submit" value="login" onClick={handleLogin}/>
+				<input type="submit" value="USER" onClick={test}/>
 			</form>
 		</div>
 	)
