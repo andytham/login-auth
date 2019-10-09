@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 
-import {useAuth} from './context/auth-context'
+import { useAuth } from './context/auth-context'
 
 export default function Login(){
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
-	function handleClick(){
-
+	function handleUsernameChange(e){
+		setUsername(e.target.value)
+	}
+	function handlePasswordChange(e){
+		setPassword(e.target.value)
 	}
 	return (
 		<div className="login">
@@ -15,15 +18,15 @@ export default function Login(){
 					<input 
 						type="text"
 						value={username}
-						onChange={setUsername}
+						onChange={handleUsernameChange}
 						/>
 				</label>
 				<br />
 				<label for="password">Password
 					<input 
-						type="text"
+						type="password"
 						value={password}
-						onChange={setPassword}
+						onChange={handlePasswordChange}
 					/>
 				</label>
 				<br />
@@ -31,4 +34,4 @@ export default function Login(){
 			</form>
 		</div>
 	)
-}
+}	
