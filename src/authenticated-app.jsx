@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { userContext } from './context/user'
+import { UserContext } from './context/user'
 export default function AuthenticatedApp(){
-	const user = useContext(userContext);
+	const user = useContext(UserContext);
 	
 	return(
 		<div>
