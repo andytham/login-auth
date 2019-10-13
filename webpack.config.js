@@ -33,7 +33,8 @@ const config = {
               publicPath: '../'
             }
           },
-          "css-loader"
+          {loader: 'css-loader'},
+          {loader: 'sass-loader'}
 				]
       },
       {

@@ -3,7 +3,7 @@ import Login from './components/Login';
 
 export default function UnauthenticatedApp(){
 	return(
-		<div>
+		<div className="unauthenticated">
 			User is unauthenticated
 			<Login />
 		</div>

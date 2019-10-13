@@ -1,0 +1,10 @@
+* {
+	background-color: red;
+	label > * {
+		background-color: blue;
+		color: purple;
+	}
+	.unauthenticated {
+		color: purple;
+	}
+}
