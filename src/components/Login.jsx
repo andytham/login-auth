@@ -3,6 +3,8 @@ import React, { useState, useContext } from 'react';
 import { AuthContext } from '../context/auth'
 import { UserContext } from '../context/user';
 
+import { Link } from 'react-router-dom';
+
 export default function Login(){
 	const user = useContext(UserContext)
 	const auth = useContext(AuthContext)
@@ -35,7 +37,9 @@ export default function Login(){
 				</label>
 				<br />
 				<input type="submit" value="Login" onClick={handleLogin}/>
-				<input type="button" onclick="location.href='/register';" value="Register" />
+				<Link to='/register'>
+					<input type="button" value="Register" />
+				</Link>
 			</form>
 		</div>
 	)
