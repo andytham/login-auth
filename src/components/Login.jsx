@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
-
-import { AuthContext } from '../context/auth'
-import { UserContext } from '../context/user';
-
 import { Link } from 'react-router-dom';
+
+import { AuthContext } from '../context/auth';
+import { UserContext } from '../context/user';
+import useFormInput from '../helper/form.js';
 
 export default function Login(){
 	const user = useContext(UserContext)
@@ -43,17 +43,4 @@ export default function Login(){
 			</form>
 		</div>
 	)
-}
-
-function useFormInput(initialValue){
-	const [value, setValue] = useState(initialValue)
-	
-	function handleChange(e){
-		setValue(e.target.value)
-	}
-
-	return {
-		value,
-		onChange: handleChange
-	};
 }
