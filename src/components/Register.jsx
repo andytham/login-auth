@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import useFormInput from '../helper/form.js'
-import { UserContext } from '../context/auth';
+import { UserContext } from '../context/user';
 
 export default function Register(){
 	const user = useContext(UserContext);
@@ -48,7 +48,7 @@ export default function Register(){
 				<label>
 					Retype your password
 					<input
-					type="password2"
+					type="password"
 					{...password2}
 					/>
 				</label>
