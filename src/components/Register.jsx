@@ -22,8 +22,8 @@ export default function Register(){
 		// should hit the backend, create a user etc
 	}
 	return(
-		<div className="register">
-			<form>
+		<div className="register-wrapper">
+			<form className="register-form">
 				<label>
 					Username
 					<input

@@ -16,8 +16,8 @@ export default function Login(){
 	}
 
 	return (
-		<div className="login">
-			<form>
+		<div className="login-wrapper">
+			<form className="login-form">
 				<label>
 					Username
 					<input 
@@ -25,7 +25,6 @@ export default function Login(){
 						{...username}
 						/>
 				</label>
-				<br />
 				<label>
 					Password
 					<input 
@@ -33,7 +32,6 @@ export default function Login(){
 						{...password}
 					/>
 				</label>
-				<br />
 				<input type="submit" value="Login" onClick={handleLogin}/>
 				<Link to='/register'>
 					<input type="button" value="Register" />

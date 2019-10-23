@@ -4,6 +4,8 @@ import { Route } from 'react-router-dom'
 import Login from './components/Login';
 import Register from './components/Register'
 
+import './css/form.scss'
+
 export default function UnauthenticatedApp(){
 	return(
 		<div className="unauthenticated">
