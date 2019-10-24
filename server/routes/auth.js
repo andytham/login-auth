@@ -89,7 +89,7 @@ const usersController = {
 const express = require('express');
 const usersRouter = express.Router();
 
-usersRouter.get('/login', usersController.login)
+usersRouter.post('/login', usersController.login)
 usersRouter.post('/create', usersController.create) // TODO Validation
 
 module.exports = usersRouter;
