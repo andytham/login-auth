@@ -1,9 +1,9 @@
-const pgp = require('pg-promise')(options);
 const options = { 
 	query: (event) => {
 		console.log(event.query);
 	}
 }
+const pgp = require('pg-promise')(options);
 
 const setDb = () => {
 	if (process.env.NODE_ENV === "development" || !process.env.NODE_ENV){
