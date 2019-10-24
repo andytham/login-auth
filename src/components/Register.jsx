@@ -24,35 +24,31 @@ export default function Register(){
 	return(
 		<div className="register-wrapper">
 			<form className="register-form">
-				<label>
-					Username
-					<input
+				<input
 					type="text"
+					placeholder="Username"
 					{...username}
-					/>
-				</label>
-				<label>
-					E-mail
-					<input
+				/>
+				<input
 					type="text"
+					placeholder="Email"
 					{...email}
-					/>
-				</label>
-				<label>
-					Password
-					<input
+				/>
+				<input
 					type="password"
+					placeholder="Password"
 					{...password}
-					/>
-				</label>
-				<label>
-					Retype your password
-					<input
+				/>
+				<input
 					type="password"
+					placeholder="Re-enter password"
 					{...password2}
-					/>
-				</label>
-				<input type="submit" value="Register" onClick={handleRegister} />
+				/>
+				<input 
+					type="submit" 
+					value="Register" 
+					onClick={handleRegister} 
+				/>
 
 			</form>
 		</div>

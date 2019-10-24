@@ -18,21 +18,21 @@ export default function Login(){
 	return (
 		<div className="login-wrapper">
 			<form className="login-form">
-				<label>
-					Username
-					<input 
-						type="text"
-						{...username}
-						/>
-				</label>
-				<label>
-					Password
-					<input 
-						type="password"
-						{...password}
-					/>
-				</label>
-				<input type="submit" value="Login" onClick={handleLogin}/>
+				<input 
+					type="text"
+					placeholder="Username"
+					{...username}
+				/>
+				<input 
+					type="password"
+					placeholder="Password"
+					{...password}
+				/>
+				<input 
+					type="submit" 
+					value="Login" 
+					onClick={handleLogin}
+				/>
 				<Link to='/register'>
 					<input type="button" value="Register" />
 				</Link>

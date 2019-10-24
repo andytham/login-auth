@@ -1,9 +1,6 @@
-.login-wrapper{
+form{
 	max-width: 250px;
 	margin: 0 auto;
-}
-.login-form{
-
 	font-size: 20px;
 	input{
 		font-size: 15px;
@@ -18,9 +15,4 @@
 			cursor: pointer;
 		}
 	}
-	
-}
-
-.register-form{
-	display: inline-block;
 }
