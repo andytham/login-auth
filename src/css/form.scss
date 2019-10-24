@@ -3,10 +3,22 @@
 	margin: 0 auto;
 }
 .login-form{
+
+	font-size: 20px;
 	input{
+		font-size: 15px;
 		width: 100%;
-		display: block;
+		display: inline-block;
+		margin: 4px 0;
+		padding: 5px;
+		box-sizing: border-box;
+		&[type=submit] or &[type=button]{
+			border: 1px black solid;
+			border-radius: 4px;
+			cursor: pointer;
+		}
 	}
+	
 }
 
 .register-form{
