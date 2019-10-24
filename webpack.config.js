@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const config = {
 	mode: "development",
   entry: [
-    './src/index.js'
+    'babel-polyfill','./src/index.js'
   ],
   output: {
     path: path.resolve(__dirname, 'build'),
