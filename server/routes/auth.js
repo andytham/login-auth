@@ -59,6 +59,37 @@ const usersController = {
 				})
 			})
 		})	
-	}
-	
+	},
+	login: (req, res) => {
+		Users.find({
+			username: req.body.username
+		}).then(user => {
+			bcrypt.compare(req.body.password, user.password, function(err, bcryptRes){
+				if (bcryptRes){
+					res.json({
+						msg: "User found, logging in.",
+						success: true
+					})
+				} else {
+					res.json({
+						success: false
+					})
+				}
+			})
+		}).catch(err => {
+			console.log(err);
+			res.json({
+				success: false
+			})
+		})
+	}	
 }
+
+// potentially awful format, should split into seperate files for routes
+const express = require('express');
+const usersRouter = express.Router();
+
+usersRouter.get('/login', usersController.login)
+usersRouter.post('/create', usersController.create) // TODO Validation
+
+module.exports = usersRouter;
