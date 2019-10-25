@@ -68,18 +68,18 @@ const usersController = {
 				if (bcryptRes){
 					console.log("Login successful.")
 					res.json({
-						msg: "User found, logging in.",
+						msg: "Login successful.",
 						success: true
 					})
 				} else {
 					console.log("Wrong username/password.")
-					res.status(401).json({success: false})
-
+					// res.sendStatus(401).json({success:false})
+					res.status(401).send("Testing")
 				}
 			})
 		}).catch(err => {
-			console.log("Login failed");
-			res.status(401).json({success: false})
+			console.log("User not found.");
+			res.sendStatus(401)
 		})
 	}	
 }

@@ -19,7 +19,7 @@ function AuthProvider(props) {
       setState({...state, user: input.username})
 
     } catch (err) {
-      console.log(err);
+      console.log(err.response.data);
     }
 
 
