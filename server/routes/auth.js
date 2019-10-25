@@ -73,16 +73,13 @@ const usersController = {
 					})
 				} else {
 					console.log("Wrong username/password.")
-					res.json({
-						success: false
-					})
+					res.status(401).json({success: false})
+
 				}
 			})
 		}).catch(err => {
 			console.log("Login failed");
-			res.json({
-				success: false
-			})
+			res.status(401).json({success: false})
 		})
 	}	
 }

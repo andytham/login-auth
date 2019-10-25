@@ -10,17 +10,14 @@ function AuthProvider(props) {
 
   const login = async (input) => { // make a login request, for now let anyone login with whatever
     try {
-      let res = await axios.post('/auth/login', 
-      {
-        username: input.username,
-        password: input.password
-      })
-      console.log(res)
-      if(res.data.success){
-        setState({...state, user: input.username})
-      } else {
-        throw "Failed"
-      }
+      await axios.post('/auth/login', 
+        {
+          username: input.username,
+          password: input.password
+        }
+      )
+      setState({...state, user: input.username})
+
     } catch (err) {
       console.log(err);
     }
