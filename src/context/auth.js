@@ -16,7 +16,11 @@ function AuthProvider(props) {
         password: input.password
       })
       console.log(res)
-      setState({...state, user: input.username})
+      if(res.data.success){
+        setState({...state, user: input.username})
+      } else {
+        throw "Failed"
+      }
     } catch (err) {
       console.log(err);
     }
