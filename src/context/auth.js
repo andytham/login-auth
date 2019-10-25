@@ -8,20 +8,20 @@ function AuthProvider(props) {
 
   const [state, setState] = useState({user: ''}) // initial state, check localStorage first
 
-  const login = (input) => { // make a login request, for now let anyone login with whatever
-    axios.post('/auth/login', {
-      username: input.username,
-      password: input.password
+  const login = async (input) => { // make a login request, for now let anyone login with whatever
+    try {
+      let res = await axios.post('/auth/login', 
+      {
+        username: input.username,
+        password: input.password
       })
-      .then(data => {
-        if (data.data.success){
-          setState({...state, user: input.username});
-        } else {
-          //error
-        }
-      })
-      .catch(err => {console.log(err);})
-    
+      console.log(res)
+      setState({...state, user: input.username})
+    } catch (err) {
+      console.log(err);
+    }
+
+
     
   } 
   const register = () => { // register the user
