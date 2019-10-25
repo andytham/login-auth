@@ -66,18 +66,20 @@ const usersController = {
 		}).then(user => {
 			bcrypt.compare(req.body.password, user.password, function(err, bcryptRes){
 				if (bcryptRes){
+					console.log("Login successful.")
 					res.json({
 						msg: "User found, logging in.",
 						success: true
 					})
 				} else {
+					console.log("Wrong username/password.")
 					res.json({
 						success: false
 					})
 				}
 			})
 		}).catch(err => {
-			console.log(err);
+			console.log("Login failed");
 			res.json({
 				success: false
 			})
