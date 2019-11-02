@@ -24,7 +24,9 @@ function AuthProvider(props) {
 
   const register = () => { // register the user
   }
-  const logout = () => { // clear the token in localStorage and the user data
+  const logout = () => {
+    setState({ ...state, user: ''})
+    // clear localStorage
   }
 
   return (
