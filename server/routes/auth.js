@@ -73,13 +73,12 @@ const usersController = {
 					})
 				} else {
 					console.log("Wrong username/password.")
-					// res.sendStatus(401).json({success:false})
-					res.status(401).send("Testing")
+					res.status(401).send("Wrong username/password.")
 				}
 			})
 		}).catch(err => {
 			console.log("User not found.");
-			res.sendStatus(401)
+			res.status(401).send("User not found.")
 		})
 	}	
 }
