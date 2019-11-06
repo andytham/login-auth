@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-const Users = require('../models/Users')
+const User = require('../models/User')
 const usersController = {
 	index: () => {
 
@@ -11,7 +11,7 @@ const usersController = {
 			username = req.body.username
 		bcrypt.genSalt(saltRounds, function(err, salt) {
 			bcrypt.hash(password, salt, function(err, hash){
-				Users.create({
+				User.create({
 					username: username,
 					password: hash,
 					email: email
@@ -30,7 +30,7 @@ const usersController = {
 		})	
 	},
 	login: (req, res) => {
-		Users.find({
+		User.find({
 			username: req.body.username
 		}).then(user => {
 			bcrypt.compare(req.body.password, user.password, function(err, bcryptRes){

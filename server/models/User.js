@@ -1,6 +1,6 @@
 const db = require('../db/config');
 
-const Users = {
+const User = {
 	findAll: () => {
 		return db.query(
 			`
@@ -30,4 +30,4 @@ const Users = {
 	}
 }
 
-module.exports = Users;
+module.exports = User;
