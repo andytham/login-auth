@@ -2,6 +2,8 @@ CREATE EXTENSION IF NOT EXISTS citext;
 CREATE TABLE IF NOT EXISTS users(
 	id SERIAL,
 	username CITEXT UNIQUE,
+	email VARCHAR(50),
 	password VARCHAR(76),
-	email VARCHAR(50)
+	date_registered TIMESTAMP WITH TIME ZONE,
+	roles TEXT[]
 );
