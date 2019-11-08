@@ -1,5 +1,5 @@
 INSERT INTO users
-    (username, email, password, date_registered, roles)
+    (username, email, password, sign_up_date, roles)
     VALUES
     ('server', 'andytham@gmail.com' , 'supppppersecret', '1/1/1990', ARRAY['admin']),
     ('Erina', 'rabi@ribi.com', 'rabiribi', '1/1/1990',  ARRAY['user']),
