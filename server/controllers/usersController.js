@@ -1,6 +1,17 @@
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const User = require('../models/User')
+const jwt = require('jsonwebtoken')
+
+function verifyToken(token){
+	try {
+		jwt.verify(token, "secret")
+		return true;
+	} catch (err) {
+		return false;
+	}
+}
+
 const usersController = {
 	index: () => {
 
@@ -35,6 +46,12 @@ const usersController = {
 		}).then(user => {
 			bcrypt.compare(req.body.password, user.password, function(err, bcryptRes){
 				if (bcryptRes){
+					let token = jwt.sign({
+						exp: Math.floor(Date.now() / 1000) + (60 * 60),
+						user: req.body.username
+					}, "secret")
+					req.session.token = token;
+					req.session.user = req.body.username
 					console.log("Login successful.")
 					res.json({
 						msg: "Login successful.",
