@@ -61,16 +61,21 @@ const usersController = {
 	restore: (req, res) => {
 		// Check if there is an existing session
 		if(req.session.token){
-			jwt.verify(token, "secret", function(err, decoded){
+			jwt.verify(req.session.token, "secret", function(err, decoded){
 				if(err){
+					console.log("Invalid token.");
 					res.status(401).send("Invalid token.")
-				} else if (req.body.username == decoded.user) {
+				// } else if (req.body.username == decoded.user) {
+				} else {
+					console.log(`Currently logged in as ${decoded.user}.`);
 					res.json({
-						msg: `Currently logged in as ${decoded.user}.`,
+						user: decoded.user,
 						success: true
 					})
 				}
 			})
+		} else {
+			console.log("No token.")
 		}
 	}
 }
