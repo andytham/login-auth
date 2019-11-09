@@ -4,5 +4,6 @@ const usersRouter = express.Router();
 
 usersRouter.post('/login', usersController.login)
 usersRouter.post('/create', usersController.create) // TODO Validation
+usersRouter.post('/restore', usersController.restore)
 
 module.exports = usersRouter;

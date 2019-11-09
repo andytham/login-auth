@@ -3,15 +3,6 @@ const saltRounds = 10;
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
 
-function verifyToken(token){
-	try {
-		jwt.verify(token, "secret")
-		return true;
-	} catch (err) {
-		return false;
-	}
-}
-
 const usersController = {
 	index: () => {
 
@@ -49,7 +40,7 @@ const usersController = {
 					let token = jwt.sign({
 						exp: Math.floor(Date.now() / 1000) + (60 * 60),
 						user: req.body.username
-					}, "secret")
+					}, "secret") // secret should be in env
 					req.session.token = token;
 					req.session.user = req.body.username
 					console.log("Login successful.")
@@ -66,7 +57,22 @@ const usersController = {
 			console.log("User not found.");
 			res.status(401).send("User not found.")
 		})
-	}	
+	},
+	restore: (req, res) => {
+		// Check if there is an existing session
+		if(req.session.token){
+			jwt.verify(token, "secret", function(err, decoded){
+				if(err){
+					res.status(401).send("Invalid token.")
+				} else if (req.body.username == decoded.user) {
+					res.json({
+						msg: `Currently logged in as ${decoded.user}.`,
+						success: true
+					})
+				}
+			})
+		}
+	}
 }
 
 module.exports = usersController;
