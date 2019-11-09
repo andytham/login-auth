@@ -6,9 +6,18 @@ const AuthContext = React.createContext()
 function AuthProvider(props) {
   // add loading image if fetching user data
   
-  const [state, setState] = useState({ user: '' }) // initial state, check localStorage first
+  const [state, setState] = useState({ user: '' }) // initial state
 
-  const login = async (input) => { // make a login request, for now let anyone login with whatever
+  const restore = async () => { // restore session from JWT
+    try {
+      let data = await axios.post('/auth/restore')
+      setState({ ...state, user: data.data.user })
+    } catch (err) {
+      console.log(err.response.data);
+    }
+  }
+  
+  const login = async (input) => {
     try {
       await axios.post('/auth/login',
         {
@@ -20,7 +29,7 @@ function AuthProvider(props) {
     } catch (err) {
       console.log(err.response.data);
     }
-  }
+  } 
 
   const register = () => { // register the user
   }
@@ -30,7 +39,7 @@ function AuthProvider(props) {
   }
 
   return (
-    <AuthContext.Provider value={{ state, login, logout, register }} {...props} />
+    <AuthContext.Provider value={{ state, restore, login, logout, register }} {...props} />
   )
 }
 
