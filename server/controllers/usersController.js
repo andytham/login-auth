@@ -77,6 +77,12 @@ const usersController = {
 		} else {
 			console.log("No token.")
 		}
+	},
+	logout: (req, res) => {
+		console.log(req.session);
+		req.session.destroy(function(err) {
+			console.log(err);
+		})
 	}
 }
 

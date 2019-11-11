@@ -16,7 +16,7 @@ function AuthProvider(props) {
       console.log(err.response.data);
     }
   }
-  
+
   const login = async (input) => {
     try {
       await axios.post('/auth/login',
@@ -33,9 +33,13 @@ function AuthProvider(props) {
 
   const register = () => { // register the user
   }
-  const logout = () => {
+  const logout = async () => {
     setState({ ...state, user: ''})
-    // clear localStorage
+    try {
+      await axios.get('/auth/logout')
+    } catch (err) {
+      console.log(err.response.data);
+    }
   }
 
   return (
