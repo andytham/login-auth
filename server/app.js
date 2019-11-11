@@ -15,14 +15,20 @@ app.use(bodyParser.urlencoded({
 
 // session
 const session = require('express-session');
+const redis = require('redis');
+const redisClient = redis.createClient();
+const redisStore = require('connect-redis')(session);
 
-//TODO persistence using a session store
+redisClient.on('error', (err) => {
+  console.log('Redis error: ', err);
+});
 
 app.use(express.static('build'));
 app.use(session({
 	secret: "secretSession",
 	resave: true,
 	saveUninitialized: true,
+	store: new redisStore({ client: redisClient }),
 	cookie: {
 		originalMaxAge: null,
   	maxAge: 60 * 60 * 1000, //milliseconds
