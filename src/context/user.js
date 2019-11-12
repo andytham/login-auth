@@ -6,9 +6,9 @@ const UserContext = React.createContext()
 function UserProvider(props) {
   const auth = useContext(AuthContext)
   const {
-    state: {user},
+    state: { user },
   } = auth
   return <UserContext.Provider value={user} {...props} />
 }
 
-export {UserContext, UserProvider}
+export { UserContext, UserProvider }

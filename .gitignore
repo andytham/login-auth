@@ -3,6 +3,8 @@
 # dependencies
 /node_modules
 
+# redis
+dump.rdb
 
 # production
 /build

@@ -22,7 +22,7 @@ export default function Register(){
 		// should hit the backend, create a user etc
 	}
 	return(
-		<div className="register-wrapper">
+		<div className="register">
 			<form className="register-form">
 				<input
 					type="text"

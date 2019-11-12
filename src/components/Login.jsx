@@ -11,12 +11,16 @@ export default function Login(){
 
 	function handleLogin(e){
 		e.preventDefault()
-		auth.login(username.value)
+		let input = {
+			username: username.value,
+			password: password.value
+		}
+		auth.login(input)
 		auth.register()
 	}
 
 	return (
-		<div className="login-wrapper">
+		<div className="login">
 			<form className="login-form">
 				<input 
 					type="text"
